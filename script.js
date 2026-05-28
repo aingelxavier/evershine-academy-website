@@ -1,6 +1,8 @@
 const toggle = document.querySelector(".nav-toggle");
 const menu = document.querySelector(".nav-links");
 const contactForm = document.querySelector(".contact-form");
+const thankYouModal = document.querySelector(".thank-you-modal");
+const modalCloseButtons = document.querySelectorAll(".modal-close, .modal-ok");
 
 if (toggle && menu) {
   toggle.addEventListener("click", () => {
@@ -20,27 +22,28 @@ if (toggle && menu) {
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+    if (!contactForm.checkValidity()) {
+      return;
+    }
 
-    const formData = new FormData(contactForm);
-    const name = String(formData.get("name") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-    const updates = formData.get("updates") === "yes" ? "Yes" : "No";
-
-    const subject = `New enquiry from ${name || "Evershine website"}`;
-    const body = [
-      "New enquiry from Evershine Learning Academy website",
-      "",
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Updates requested: ${updates}`,
-      "",
-      "Message:",
-      message || "No message provided.",
-    ].join("\n");
-
-    const mailto = `mailto:evershineacademytcr@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    window.setTimeout(() => {
+      thankYouModal?.removeAttribute("hidden");
+      document.body.classList.add("modal-open");
+      contactForm.reset();
+    }, 250);
   });
 }
+
+modalCloseButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    thankYouModal?.setAttribute("hidden", "");
+    document.body.classList.remove("modal-open");
+  });
+});
+
+thankYouModal?.addEventListener("click", (event) => {
+  if (event.target === thankYouModal) {
+    thankYouModal.setAttribute("hidden", "");
+    document.body.classList.remove("modal-open");
+  }
+});

@@ -258,8 +258,11 @@
           Thrissur, Kerala, India
         </address>
       </div>
-      <form class="contact-form" action="mailto:evershineacademytcr@gmail.com" method="post" enctype="text/plain">
+      <form class="contact-form" action="https://formsubmit.co/evershineacademytcr@gmail.com" method="post" target="contact-submit-frame">
         <h3>Drop us a line</h3>
+        <input type="hidden" name="_subject" value="New enquiry from Evershine Learning Academy website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <label for="name">Name</label>
         <input id="name" name="name" type="text" placeholder="Parent or student name" required>
         <label for="email">Email</label>
@@ -271,8 +274,9 @@
           <span>Sign up for updates, promotions, and more.</span>
         </label>
         <button class="btn primary" type="submit">Send</button>
-        <small>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</small>
+        <small>Your details will be sent to evershineacademytcr@gmail.com. We will contact you soon.</small>
       </form>
+      <iframe class="hidden-frame" name="contact-submit-frame" title="Contact form submission"></iframe>
     </section>
 
     <section class="hours section-pad">
@@ -308,6 +312,16 @@
     </div>
     <p class="copyright">Copyright © 2026 Evershine Learning Academy - All rights reserved.</p>
   </footer>
+
+  <div class="thank-you-modal" role="dialog" aria-modal="true" aria-labelledby="thank-you-title" hidden>
+    <div class="thank-you-card">
+      <button class="modal-close" type="button" aria-label="Close thank you message">×</button>
+      <span class="modal-icon">✓</span>
+      <h2 id="thank-you-title">Thank you!</h2>
+      <p>Your details have been submitted. We will call back soon.</p>
+      <button class="btn primary modal-ok" type="button">OK</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
