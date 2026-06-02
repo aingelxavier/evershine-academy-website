@@ -28,10 +28,9 @@ body {
   color: var(--ink);
   font-family: "Nunito", Arial, sans-serif;
   background:
-    linear-gradient(90deg, rgba(38, 132, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, #fff8e9 0%, #f8fdff 45%, #fffaf2 100%);
-  background-size: 84px 84px, 84px 84px, auto;
+    radial-gradient(circle at 8% 5%, rgba(255, 209, 102, 0.35), transparent 28rem),
+    radial-gradient(circle at 92% 18%, rgba(40, 199, 192, 0.22), transparent 24rem),
+    linear-gradient(180deg, #fff8e9 0%, #f9fdff 44%, #fffaf2 100%);
 }
 
 body.menu-open {
@@ -154,7 +153,6 @@ a {
 }
 
 .hero {
-  position: relative;
   min-height: calc(100vh - 74px);
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
@@ -162,19 +160,6 @@ a {
   gap: 38px;
   padding-top: 56px;
   padding-bottom: 56px;
-  isolation: isolate;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 22px 0 12px;
-  z-index: -1;
-  background:
-    linear-gradient(135deg, rgba(255, 209, 102, 0.28), transparent 36%),
-    linear-gradient(315deg, rgba(40, 199, 192, 0.24), transparent 40%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0));
-  clip-path: polygon(0 0, 100% 0, 100% 88%, 62% 100%, 0 92%);
 }
 
 .eyebrow {
@@ -200,8 +185,8 @@ h2 {
 }
 
 h1 {
-  max-width: 720px;
-  font-size: clamp(3rem, 6.3vw, 5.05rem);
+  max-width: 680px;
+  font-size: clamp(2.85rem, 6vw, 4.7rem);
 }
 
 h2 {
@@ -219,10 +204,9 @@ p {
 }
 
 .hero-copy {
-  max-width: 650px;
+  max-width: 610px;
   margin: 18px 0 0;
-  color: #405f79;
-  font-size: 1.2rem;
+  font-size: 1.18rem;
 }
 
 .hero-actions,
@@ -255,13 +239,13 @@ p {
 
 .btn.primary {
   color: var(--ink);
-  background: linear-gradient(135deg, var(--sun), #ffb703);
+  background: var(--sun);
   box-shadow: 0 12px 28px rgba(255, 159, 28, 0.27);
 }
 
 .btn.secondary {
   color: var(--white);
-  background: linear-gradient(135deg, var(--aqua), #0f8b8d);
+  background: var(--aqua);
   box-shadow: 0 12px 28px rgba(40, 199, 192, 0.24);
 }
 
@@ -277,9 +261,8 @@ p {
   min-height: 74px;
   padding: 14px;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.84);
-  border: 1px solid rgba(23, 50, 77, 0.08);
-  box-shadow: 0 12px 34px rgba(23, 50, 77, 0.1);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 10px 30px rgba(23, 50, 77, 0.08);
   color: var(--muted);
   font-weight: 800;
 }
@@ -292,22 +275,25 @@ p {
 
 .hero-visual {
   position: relative;
-  min-height: min(580px, 66vh);
-  height: 100%;
+  isolation: isolate;
 }
 
-.hero-visual canvas {
-  width: 100%;
-  height: 100%;
-  min-height: 520px;
-  display: block;
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 8% 2% 0 12%;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(38, 132, 255, 0.18));
+  transform: rotate(3deg);
+  z-index: -1;
 }
 
-.hero-visual img,
-.hero-visual noscript img {
+.hero-visual img {
   width: 100%;
   aspect-ratio: 1.08 / 1;
   object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
 }
 
 .section-heading {
@@ -810,16 +796,10 @@ address {
 
   .hero {
     min-height: auto;
-    gap: 22px;
   }
 
   .hero-visual {
     order: -1;
-    min-height: 420px;
-  }
-
-  .hero-visual canvas {
-    min-height: 420px;
   }
 
   .mission-grid,
@@ -852,10 +832,6 @@ address {
     padding: 54px 0;
   }
 
-  .hero {
-    padding-top: 28px;
-  }
-
   h1 {
     font-size: clamp(2.35rem, 14vw, 3.4rem);
   }
@@ -876,14 +852,6 @@ address {
 
   .hero-stats span {
     min-height: auto;
-  }
-
-  .hero-visual {
-    min-height: 330px;
-  }
-
-  .hero-visual canvas {
-    min-height: 330px;
   }
 
   .program-card {
@@ -907,6 +875,8 @@ address {
   }
 
   .whatsapp-float {
-    display: none;
+    left: 14px;
+    right: 14px;
+    justify-content: center;
   }
 }
