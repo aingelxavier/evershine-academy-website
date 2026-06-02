@@ -34,7 +34,7 @@
   </header>
 
   <main>
-    <section class="hero section-pad">
+    <section class="hero section-pad" aria-label="Evershine Learning Academy introduction">
       <div class="hero-content">
         <p class="eyebrow">Welcome to Evershine Learning Academy</p>
         <h1>Empowering every child to learn with confidence.</h1>
@@ -49,8 +49,11 @@
           <span><strong>Online</strong> & in-person</span>
         </div>
       </div>
-      <div class="hero-visual">
-        <img src="assets/hero-learning.png" alt="Children learning happily with a teacher in a colorful classroom" />
+      <div class="hero-visual" aria-label="Animated 3D learning materials">
+        <canvas id="hero-3d-canvas"></canvas>
+        <noscript>
+          <img src="assets/hero-learning.png" alt="Children learning happily with a teacher in a colorful classroom" />
+        </noscript>
       </div>
     </section>
 
@@ -323,6 +326,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
